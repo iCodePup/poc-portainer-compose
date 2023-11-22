@@ -1,0 +1,20 @@
+image:
+  name: atlassian/default-image:2
+definitions:
+  steps:
+    - step: &update-app-version
+        name: Update app version
+        script:
+          - line=$(grep "export APP_TAG=" stack.env)
+          - newLine=$(echo $line | sed -E 's/([^\ ]+$)/APP_TAG='$VERSION'/')
+          - sed -i -e "s/$line/$newLine/g" stack.env
+          - git commit -am "Bump wimes app tag $VERSION" --allow-empty
+          - git push origin master
+          #- wget TODO call portainer webhook...with VM+DNS
+pipelines:
+  custom:
+    updateAppVersion:
+      - variables:
+          - name: VERSION
+          - name: NEXUS_REPO
+      - step: *update-app-version

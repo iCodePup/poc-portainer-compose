@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend
+    image: docker.wimes.fr/pibrli/docker-app-sample:${TAG}
+    restart: always
+    networks:
+      - test-network
+    volumes:
+      - maconf.conf:maconf.conf
+  frontend_deux:
+    container_name: frontend_deux
+    image: docker.wimes.fr/pibrli/docker-app-sample:${TAG}
+    restart: always
+    networks:
+      - test-network
