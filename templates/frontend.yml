@@ -7,7 +7,7 @@ services:
     networks:
       - test-network
     volumes:
-      - maconf.conf:maconf.conf
+      - ./test/poc-portainer-compose/templates/maconf.conf:/maconf.conf
   frontend_deux:
     container_name: frontend_deux
     image: docker.wimes.fr/pibrli/docker-app-sample:${TAG}
