@@ -8,9 +8,9 @@ definitions:
           - line=$(grep "export APP_TAG=" stack.env)
           - newLine=$(echo $line | sed -E 's/([^\ ]+$)/APP_TAG='$VERSION'/')
           - sed -i -e "s/$line/$newLine/g" stack.env
-          - git commit -am "Bump wimes app tag $VERSION" --allow-empty
+          - git commit -am "Bump app tag $VERSION" --allow-empty
           - git push origin master
-          #- wget TODO call portainer webhook...with VM+DNS
+          #- wget TODO call portainer webhook...with VM+DNS automation-brli.brl.fr/XXXX/
 pipelines:
   custom:
     updateAppVersion:
