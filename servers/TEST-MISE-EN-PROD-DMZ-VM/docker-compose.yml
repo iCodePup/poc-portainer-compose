@@ -2,11 +2,11 @@ version: '3.8'
 services:
   frontend:
     extends:
-      file: ../templates/frontend.yml
+      file: ../../../templates/frontend.yml
       service: frontend
   frontend_deux:
     extends:
-      file: ../templates/frontend.yml
+      file: ../../../templates/frontend.yml
       service: frontend_deux
 networks:
   test-network:
